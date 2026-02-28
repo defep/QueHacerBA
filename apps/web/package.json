@@ -11,13 +11,13 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
-    "@quehacerba/shared": "workspace:*",
-    "nuxt": "^3.9.0",
-    "vue": "^3.4.0",
-    "vue-router": "^4.2.5"
+    "@quehacerba/shared": "*",
+    "nuxt": "^4.3.1",
+    "vue": "^3.5.29",
+    "vue-router": "^5.0.3"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.0.0",
-    "typescript": "^5.3.0"
+    "@nuxt/devtools": "^3.2.2",
+    "typescript": "^5.7.3"
   }
 }

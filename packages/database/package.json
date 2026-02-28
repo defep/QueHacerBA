@@ -10,18 +10,19 @@
     "./*": "./src/*"
   },
   "scripts": {
-    "migrate": "kysely-migrator migrate",
-    "migrate:generate": "kysely-migrator generate",
+    "build": "tsc",
+    "migrate": "tsx src/migrate.ts",
+    "migrate:create": "tsx src/migrate.ts create",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "kysely": "^0.27.0",
-    "pg": "^8.11.0"
+    "kysely": "^0.28.11",
+    "pg": "^8.13.0"
   },
   "devDependencies": {
-    "@types/pg": "^8.10.0",
-    "kysely-migrator": "^0.3.0",
-    "typescript": "^5.3.0"
+    "@types/pg": "^8.11.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.3"
   }
 }

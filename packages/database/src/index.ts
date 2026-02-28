@@ -1,4 +1,4 @@
-import { Kysely, PostgresAdapter, PostgresIntrospector, PostgresQueryCompiler } from 'kysely';
+import { Kysely, PostgresDialect } from 'kysely';
 import pg from 'pg';
 
 const { Pool } = pg;
@@ -18,10 +18,10 @@ export interface Database {
   };
 }
 
-let db: Kysely<Database> | undefined;
+let dbInstance: Kysely<Database> | undefined;
 
 export function getDatabase(): Kysely<Database> {
-  if (!db) {
+  if (!dbInstance) {
     const pool = new Pool({
       host: process.env.DB_HOST ?? 'localhost',
       port: parseInt(process.env.DB_PORT ?? '5432'),
@@ -31,17 +31,14 @@ export function getDatabase(): Kysely<Database> {
       max: 10,
     });
 
-    db = new Kysely<Database>({
-      dialect: {
-        createAdapter: () => new PostgresAdapter(),
-        createIntrospector: (db) => new PostgresIntrospector(db),
-        createQueryCompiler: () => new PostgresQueryCompiler(),
-      },
-      ...pool,
+    dbInstance = new Kysely<Database>({
+      dialect: new PostgresDialect({
+        pool,
+      }),
     });
   }
 
-  return db;
+  return dbInstance;
 }
 
 export const db = getDatabase();

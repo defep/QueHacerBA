@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   
@@ -16,8 +18,8 @@ export default defineNuxtConfig({
     shim: false,
   },
 
-  pathAliases: {
-    '@': '/src',
-    '~': '/src',
+  alias: {
+    '@': './src',
+    '~': './src',
   },
 });
