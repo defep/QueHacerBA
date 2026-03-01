@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    volumes:
+      - ./apps/api/src:/app/apps/api/src
+      - ./apps/api/src/data:/app/apps/api/src/data
+      - ./packages:/app/packages
+    command: npx tsx --watch src/index.ts
+
+  web:
+    volumes:
+      - ./apps/web:/app/apps/web
+      - ./packages:/app/packages
+    command: npm run dev --workspace=apps/web
+    environment:
+      - CHOKIDAR_USEPOLLING=true

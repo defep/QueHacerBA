@@ -1,0 +1,133 @@
+{
+  "weekend_agenda": {
+    "date": "28 de febrero y 1 de marzo de 2026",
+    "cities": [
+      {
+        "city": "Chascomús",
+        "events": [
+          {
+            "name": "Último Día - Nos Vamos",
+            "description": "Show musical de @atodamaquinaok para cerrar la temporada 2026",
+            "day": "28 de febrero",
+            "time": "Por confirmar",
+            "cost": "Consultar entrada",
+            "venue": "Parque Acuático Chascomús",
+            "source": "Parque Acuático Chascomús | Facebook",
+            "audience": ["familias", "jóvenes"]
+          }
+        ]
+      },
+      {
+        "city": "Brandsen",
+        "events": [
+          {
+            "name": "Fiesta de la Espuma 2026",
+            "description": "Juegos de agua, música, buffet y cierre con un súper cañón de espuma",
+            "day": "28 de febrero",
+            "time": "16:00",
+            "cost": "Gratis",
+            "venue": "Biblioteca Corazón de Mandarina, Brandsen",
+            "source": "InfoBrandsen | Facebook @infobrandsen",
+            "audience": ["familias", "niños"]
+          }
+        ]
+      },
+      {
+        "city": "Magdalena",
+        "events": [
+          {
+            "name": "Carnaval Magdalena 2026 - Atalaya",
+            "description": "Desfiles de comparsas, murgas, shows musicales y concursos de disfraces",
+            "day": "28 de febrero",
+            "time": "20:00",
+            "cost": "Gratis",
+            "venue": "Rambla de la Alegría, Atalaya",
+            "source": "Municipio de Magdalena | Buenos Aires Tur",
+            "audience": ["familias", "jóvenes", "turistas"]
+          },
+          {
+            "name": "Carnaval Magdalena 2026 - Bavio",
+            "description": "Corsos, comparsas y shows en vivo",
+            "day": "1 de marzo",
+            "time": "20:00",
+            "cost": "Gratis",
+            "venue": "Predio de la estación, Bavio",
+            "source": "Municipio de Magdalena",
+            "audience": ["familias", "jóvenes", "turistas"]
+          }
+        ]
+      },
+      {
+        "city": "San Miguel del Monte",
+        "events": [
+          {
+            "name": "Expo Fiesta 80's Monte 2026 - Primera Jornada",
+            "description": "Shows en vivo: Walkman, La Molina (tributo a Creedence Clearwater Revival), Karina Ranni Original, La Prima. Food trucks, artesanos, emprendedores, simulador de realidad virtual",
+            "day": "28 de febrero",
+            "time": "12:00",
+            "cost": "Gratis",
+            "venue": "Av. Raúl Basualdo e Yrigoyen, San Miguel del Monte",
+            "source": "Municipio de Monte | monte.gob.ar/expo80/ | @expofiesta80s",
+            "audience": ["familias", "jóvenes", "nostálgicos años 80"]
+          },
+          {
+            "name": "Expo Fiesta 80's Monte 2026 - Segunda Jornada",
+            "description": "Shows en vivo, food trucks, artesanos, emprendedores",
+            "day": "1 de marzo",
+            "time": "12:00",
+            "cost": "Gratis",
+            "venue": "Av. Raúl Basualdo e Yrigoyen, San Miguel del Monte",
+            "source": "Municipio de Monte | monte.gob.ar/expo80/",
+            "audience": ["familias", "jóvenes", "nostálgicos años 80"]
+          }
+        ]
+      },
+      {
+        "city": "Lobos",
+        "events": []
+      },
+      {
+        "city": "Ranchos",
+        "events": []
+      },
+      {
+        "city": "General Belgrano",
+        "events": [
+          {
+            "name": "MedievalCon - La Convención de la Edad Media - Primera Jornada",
+            "description": "Mercados de artesanos medievales, gastronomía de época, espectáculos de combate con espadas, shows de fuego y malabaristas, actividades para niños, un fuerte medieval exclusivo",
+            "day": "28 de febrero",
+            "time": "13:00 - 20:00",
+            "cost": "Gratis",
+            "venue": "Parque Mateo Bruzzo, General Belgrano",
+            "source": "MedievalCon Argentina | @medievalconarg | Turismo General Belgrano | generalbelgrano.tur.ar",
+            "audience": ["familias", "jóvenes", "adultos", "amantes historia medieval"]
+          },
+          {
+            "name": "MedievalCon - La Convención de la Edad Media - Segunda Jornada",
+            "description": "Mercados de artesanos medievales, gastronomía de época, espectáculos de combate con espadas, shows de fuego y malabaristas, actividades para niños",
+            "day": "1 de marzo",
+            "time": "13:00 - 20:00",
+            "cost": "Gratis",
+            "venue": "Parque Mateo Bruzzo, General Belgrano",
+            "source": "MedievalCon Argentina | Turismo General Belgrano",
+            "audience": ["familias", "jóvenes", "adultos", "amantes historia medieval"]
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "total_events": 8,
+      "free_events": 7,
+      "paid_events": 1,
+      "cities_with_events": ["Chascomús", "Brandsen", "Magdalena", "San Miguel del Monte", "General Belgrano"],
+      "cities_without_events": ["Lobos", "Ranchos"]
+    },
+    "notes": [
+      "Agenda actualizada el 28 de febrero de 2026",
+      "Se recomienda confirmar horarios antes de asistir",
+      "Los eventos son al aire libre - revisar clima",
+      "Fuentes: Municipios PBA, secretarías Cultura y Turismo, Turismo PBA, medios locales"
+    ]
+  }
+}

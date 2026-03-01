@@ -18,7 +18,7 @@ quehacerba/
 
 ## Requisitos
 
-- Node.js >= 20
+- Node.js >= 24
 - Docker y Docker Compose (opcional)
 
 ## Desarrollo Local
@@ -53,24 +53,40 @@ npm run dev:web
 
 ## Docker
 
-### Desarrollo
+### Desarrollo (con hot reload)
 
 ```bash
-# Todo los servicios
-docker-compose up
-
-# Solo base de datos
-docker-compose up postgres
-
-# Clean cache
-docker-compose build --no-cache <service>
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
+
+Esto monta los fuentes localmente y reinicia automáticamente:
+- **API**: http://localhost:3001 (tsx watch)
+- **Web**: http://localhost:3000 (nuxt dev)
+- **DB**: http://localhost:5432
 
 ### Producción
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
+
+### Otros comandos
+
+```bash
+# Solo base de datos
+docker compose up postgres
+
+# Rebuild sin cache
+docker compose build --no-cache <service>
+```
+
+## API Endpoints
+
+| Endpoint | Descripción |
+|----------|-------------|
+| `GET /api/agenda` | Agenda de eventos del fin de semana |
+| `GET /api/events` | Lista de eventos (placeholder) |
+| `GET /health` | Health check |
 
 ## Scripts Disponibles
 
@@ -84,7 +100,7 @@ docker-compose up --build
 
 ## Tecnologías
 
-- **Backend**: Fastify, TypeScript, Kysely, Zod
-- **Frontend**: Nuxt 3, Vue 3
+- **Backend**: Fastify 5, TypeScript, Kysely, Zod
+- **Frontend**: Nuxt 4, Vue 3
 - **Base de datos**: PostgreSQL 16
 - **ORM**: Kysely

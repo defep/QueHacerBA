@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from 'fastify-type-provider-zod';
 import { db } from '@quehacerba/database';
+import fs from 'node:fs/promises';
 
 const fastify = Fastify({
   logger: true,
@@ -21,6 +22,15 @@ fastify.get('/health', async () => {
 
 fastify.get('/api/events', async () => {
   return { events: [] };
+});
+
+fastify.get('/api/agenda', async () => {
+  const data = await fs.readFile('./src/data/weekend-agenda.json', 'utf-8');
+  return JSON.parse(data);
+});
+
+fastify.get('/api/test', async () => {
+  return { test: 'hot reload working!', version: 2, timestamp: new Date().toISOString() };
 });
 
 const start = async () => {
