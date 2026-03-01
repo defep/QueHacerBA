@@ -61,6 +61,9 @@ docker-compose up
 
 # Solo base de datos
 docker-compose up postgres
+
+# Clean cache
+docker-compose build --no-cache <service>
 ```
 
 ### Producción
