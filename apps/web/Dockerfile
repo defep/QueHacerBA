@@ -13,11 +13,12 @@ COPY tsconfig.json ./
 
 RUN npm install --workspaces
 
-COPY apps/web/ ./apps/web/
-COPY packages/ ./packages/
+COPY apps/web/src/ ./apps/web/src/
 COPY apps/web/nuxt.config.ts ./
+COPY apps/web/tailwind.config.ts ./
+COPY apps/web/tsconfig.json ./
 
-RUN npm run build --workspace=apps/web
+RUN npm install --workspaces && npm run build --workspace=apps/web
 
 EXPOSE 3000
 

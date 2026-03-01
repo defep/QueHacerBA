@@ -1,0 +1,19 @@
+FROM node:24-alpine
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY package.json pnpm-lock.yaml ./
+COPY apps/web/package.json apps/web/pnpm-lock.yaml ./apps/web/
+COPY apps/api/package.json apps/api/pnpm-lock.yaml ./apps/api/
+COPY packages/database/package.json packages/database/pnpm-lock.yaml ./packages/database/
+COPY packages/shared/package.json packages/shared/pnpm-lock.yaml ./packages/shared/
+
+RUN pnpm install --workspaces
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["pnpm", "--filter", "@quehacerba/web", "dev"]

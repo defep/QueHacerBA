@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   api:
     volumes:
@@ -11,9 +9,18 @@ services:
     command: npx nodemon --watch apps/api/src --watch packages -e ts,json --restart-delay 1000 --exec "npx tsx apps/api/src/index.ts"
 
   web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
     volumes:
-      - ./apps/web:/app/apps/web
+      - ./apps/web/src:/app/apps/web/src
+      - ./apps/web/nuxt.config.ts:/app/apps/web/nuxt.config.ts
+      - ./apps/web/tsconfig.json:/app/apps/web/tsconfig.json
       - ./packages:/app/packages
-    command: npm run dev --workspace=apps/web
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./apps/web/package.json:/app/apps/web/package.json
     environment:
       - CHOKIDAR_USEPOLLING=true
+      - API_BASE_URL=http://localhost:3001
+    command: sh -c "rm -rf node_modules apps/web/node_modules && npm install && npm run dev --workspace=apps/web"
