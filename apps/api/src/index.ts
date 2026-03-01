@@ -25,7 +25,7 @@ fastify.get('/api/events', async () => {
 });
 
 fastify.get('/api/agenda', async () => {
-  const data = await fs.readFile('./src/data/weekend-agenda.json', 'utf-8');
+  const data = await fs.readFile('./apps/api/src/data/weekend-agenda.json', 'utf-8');
   return JSON.parse(data);
 });
 
