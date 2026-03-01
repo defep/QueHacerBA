@@ -29,10 +29,6 @@ fastify.get('/api/agenda', async () => {
   return JSON.parse(data);
 });
 
-fastify.get('/api/test', async () => {
-  return { test: 'hot reload working!', version: 2, timestamp: new Date().toISOString() };
-});
-
 const start = async () => {
   try {
     await fastify.listen({ port: 3001, host: '0.0.0.0' });
