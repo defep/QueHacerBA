@@ -1,0 +1,489 @@
+{
+  "agenda": {
+    "cities": [
+      {
+        "city": "General Belgrano",
+        "events": [
+          {
+            "name": "MEDIEVALCON - La Convención de la Edad Media",
+            "description": "El evento medieval más grande de Argentina llega a General Belgrano con combates medievales, herrería y forja en vivo, atracciones, mercado medieval, food trucks y actividades para toda la familia. El evento se realiza en el Parque Mateo Bruzzo con entrada libre y gratuita.",
+            "category": "festival",
+            "status": "confirmed",
+            "date": "2026-03-01",
+            "start_time": "13:00",
+            "end_time": "20:00",
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Parque Mateo Bruzzo",
+            "address": "Parque Mateo Bruzzo, General Belgrano, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "Canal 26",
+                "type": "web",
+                "url": "https://www.canal26.com/turismo/2026/02/27/la-fiesta-medieval-mas-grande-de-argentina-llega-a-un-pintoresco-pueblo-de-buenos-aires-con-entrada-gratis-cuando-y-donde-sera"
+              },
+              {
+                "entity": "@medievalcon",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DVPA5ezDylz"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Magdalena",
+        "events": []
+      },
+      {
+        "city": "La Plata",
+        "events": [
+          {
+            "name": "Luis Alberto Spinetta x Águila Amarilla",
+            "description": "Recital homenaje a Luis Alberto Spinetta a cargo de Águila Amarilla, proyecto de La Plata que rinde tributo al Flaco. Con repertorio renovado y la energía de siempre. Abren la noche Juma Tignon y Emi De Lasa. Entradas desde $12.000.",
+            "category": "recital",
+            "status": "confirmed",
+            "date": "2026-03-06",
+            "start_time": "21:00",
+            "end_time": null,
+            "is_free": false,
+            "price_text": "Desde $12.000",
+            "price_min": 12000,
+            "price_max": null,
+            "venue": "Espacio Live La Plata",
+            "address": "56 e/ 8 y 9 núm 685, La Plata, Buenos Aires",
+            "audience": ["jovenes", "adultos"],
+            "sources": [
+              {
+                "entity": "Passline",
+                "type": "web",
+                "url": "https://www.passline.com/eventos/luis-alberto-spinetta-x-aguila-amarilla"
+              },
+              {
+                "entity": "@aguilaamarilla.banda",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DUzD8qVDTMm"
+              }
+            ]
+          },
+          {
+            "name": "Mico y Curares",
+            "description": "Recital de Mico y Curares en el Centro Cultural Estación Provincial de La Plata.",
+            "category": "recital",
+            "status": "confirmed",
+            "date": "2026-03-07",
+            "start_time": "17:00",
+            "end_time": null,
+            "is_free": null,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Centro Cultural Estación Provincial",
+            "address": "Centro Cultural Estación Provincial, La Plata, Buenos Aires",
+            "audience": ["jovenes", "adultos"],
+            "sources": [
+              {
+                "entity": "Spotify Concerts",
+                "type": "web",
+                "url": "https://open.spotify.com/concert/3iPhKkQVlcn1ncJRtbBbiW"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Uribelarrea",
+        "events": []
+      },
+      {
+        "city": "Cañuelas",
+        "events": []
+      },
+      {
+        "city": "Ranchos",
+        "events": [
+          {
+            "name": "Fiesta Campera - Laguna de Ranchos",
+            "description": "Fiesta Campera en la Laguna de Ranchos con food trucks, carnes asadas, cerveza artesanal, paseo de artesanos y emprendedores, shows en vivo y música. Dos noches únicas frente a la laguna con entrada libre y gratuita.",
+            "category": "fiesta_popular",
+            "status": "confirmed",
+            "date": "2026-03-07",
+            "start_time": null,
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Laguna de Ranchos",
+            "address": "Laguna de Ranchos, Gral Paz, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "@meissencervezaartesanal",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DVPnGjykWDZ"
+              },
+              {
+                "entity": "FM General Paz",
+                "type": "web",
+                "url": "https://www.fmgeneralpaz.com/2026/02/se-viene-la-fiesta-campera-en-la-laguna.html"
+              }
+            ]
+          },
+          {
+            "name": "Fiesta Campera - Laguna de Ranchos",
+            "description": "Fiesta Campera en la Laguna de Ranchos con food trucks, carnes asadas, cerveza artesanal, paseo de artesanos y emprendedores, shows en vivo y música. Dos noches únicas frente a la laguna con entrada libre y gratuita.",
+            "category": "fiesta_popular",
+            "status": "confirmed",
+            "date": "2026-03-08",
+            "start_time": null,
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Laguna de Ranchos",
+            "address": "Laguna de Ranchos, Gral Paz, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "@gastroycerv",
+                "type": "instagram",
+                "url": "https://www.instagram.com/reel/DTMHYvcjMCz"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "San Miguel del Monte",
+        "events": [
+          {
+            "name": "LADYS TANGO Festival Internacional - Cierre",
+            "description": "Cierre del LADYS TANGO Festival Internacional 2026, festival de tango liderado por mujeres que se realiza del 5 al 9 de marzo. La jornada de cierre se realiza en San Miguel del Monte con shows, milonga y actividades especiales en un lugar mágico.",
+            "category": "cultural",
+            "status": "confirmed",
+            "date": "2026-03-09",
+            "start_time": null,
+            "end_time": null,
+            "is_free": null,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": null,
+            "address": "San Miguel del Monte, Buenos Aires",
+            "audience": ["adultos", "turistas"],
+            "sources": [
+              {
+                "entity": "@ladystangoba",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DUlRjncjsXE"
+              },
+              {
+                "entity": "Johana Copes",
+                "type": "facebook",
+                "url": "https://www.facebook.com/johana.copes.1/photos/ladys-tango-es-todo-un-referente-en-la-agenda-cultural-de-buenos-aires-especialm/10162809984523721"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Lobos",
+        "events": [
+          {
+            "name": "Festival por la Memoria y los Derechos Humanos",
+            "description": "Festival conmemorativo por los 50 años del último golpe de Estado y 10 años del Colectivo por la Memoria y los Derechos Humanos de Lobos. Actividades artísticas, musicales y de reflexión en la Plaza 1810.",
+            "category": "cultural",
+            "status": "confirmed",
+            "date": "2026-03-23",
+            "start_time": null,
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Plaza 1810",
+            "address": "Plaza 1810, Lobos, Buenos Aires",
+            "audience": ["familias", "adultos"],
+            "sources": [
+              {
+                "entity": "@colectivoporlamemorialobos",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DVJtBvblEeC"
+              },
+              {
+                "entity": "La Palabra de Lobos",
+                "type": "web",
+                "url": "https://www.lapalabradelobos.com/a-50-anos-del-golpe-civico-militar-realizan-festival-por-la-memoria-y-los-derechos-humanos"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Navarro",
+        "events": [
+          {
+            "name": "3ª Fiesta del Tambero",
+            "description": "La 3ª Fiesta del Tambero de Navarro celebra la tradición tambera local con actividades para toda la familia. Incluye patio gastronómico, concurso de quesos, espectáculos artísticos con Alta Cumbia, Los Leales, Tropical Cambá, Florencia Brown, Maggi Adrian y Oscar y sus Tropicales. Entrada libre y gratuita.",
+            "category": "fiesta_popular",
+            "status": "confirmed",
+            "date": "2026-03-21",
+            "start_time": "10:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Predio Sociedad Rural de Navarro",
+            "address": "Predio de la Sociedad Rural de Navarro, Navarro, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "Municipalidad de Navarro",
+                "type": "facebook",
+                "url": "https://www.facebook.com/municipionavarro/photos/estamos-contando-los-diasen-esta-edicion-de-la-fiesta-del-tambero-vamos-a-disf/962607375905787"
+              },
+              {
+                "entity": "@fiestadeltambero",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DUa0EzpDkPY"
+              }
+            ]
+          },
+          {
+            "name": "3ª Fiesta del Tambero",
+            "description": "La 3ª Fiesta del Tambero de Navarro celebra la tradición tambera local con actividades para toda la familia. Incluye patio gastronómico, asador criollo, concurso de quesos, espectáculos artísticos con Alta Cumbia, Los Leales, Tropical Cambá, Florencia Brown, Maggi Adrian y Oscar y sus Tropicales. Entrada libre y gratuita.",
+            "category": "fiesta_popular",
+            "status": "confirmed",
+            "date": "2026-03-22",
+            "start_time": "10:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Predio Sociedad Rural de Navarro",
+            "address": "Predio de la Sociedad Rural de Navarro, Navarro, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "Daily Web",
+                "type": "web",
+                "url": "https://dailyweb.com.ar/noticias/val/53597/navarro-celebrara-la-3-fiesta-del-tambero.html"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Mercedes",
+        "events": [
+          {
+            "name": "14ª Fiesta del Arraigo de Agote",
+            "description": "La 14ª edición de la Fiesta del Arraigo en Agote, localidad del partido de Mercedes, celebra la tradición rural con desfiles gauchos, jineteadas, artesanos, gastronomía, música en vivo y los cierres musicales de Montecristo y Commanche. Entrada libre y gratuita desde las 13 hs el sábado y desde las 10 hs el domingo.",
+            "category": "fiesta_popular",
+            "status": "confirmed",
+            "date": "2026-03-21",
+            "start_time": "13:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Calle 516",
+            "address": "Calle 516 de 505 a 511, Agote, Mercedes, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "@fiestadelarraigo",
+                "type": "facebook",
+                "url": "https://www.facebook.com/FiestadelArraigodeAgote"
+              },
+              {
+                "entity": "Noticias Mercedinas",
+                "type": "web",
+                "url": "https://noticiasmercedinas.com/site/2026/02/17/agote-se-prepara-para-la-14a-fiesta-del-arraigo-tradicion-musica-y-destrezas-criollas"
+              }
+            ]
+          },
+          {
+            "name": "14ª Fiesta del Arraigo de Agote",
+            "description": "La 14ª edición de la Fiesta del Arraigo en Agote, localidad del partido de Mercedes, celebra la tradición rural con desfiles gauchos, jineteadas, carrera de bicicletas, artesanos, gastronomía, música en vivo y los cierres musicales de Montecristo y Commanche. Entrada libre y gratuita desde las 10 hs.",
+            "category": "fiesta_popular",
+            "status": "confirmed",
+            "date": "2026-03-22",
+            "start_time": "10:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Calle 516",
+            "address": "Calle 516 de 505 a 511, Agote, Mercedes, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "@fiestadelarraigo",
+                "type": "instagram",
+                "url": "https://www.instagram.com/fiestadelarraigo"
+              }
+            ]
+          },
+          {
+            "name": "Encuentro de Cicloturismo Mercedes 2026",
+            "description": "Primer Encuentro de Cicloturismo Mercedes 2026 con recorrido por los mejores caminos rurales. Dos distancias disponibles: 30K y 60K con asistencia y apoyo. Incluye inscripción. Costo: $6.000. Salida desde el Parque Municipal Independencia (CEMUADRA).",
+            "category": "deportivo",
+            "status": "confirmed",
+            "date": "2026-03-29",
+            "start_time": "09:00",
+            "end_time": null,
+            "is_free": false,
+            "price_text": "$6.000",
+            "price_min": 6000,
+            "price_max": 6000,
+            "venue": "Parque Municipal Independencia (CEMUADRA)",
+            "address": "Parque Municipal Independencia, Mercedes, Buenos Aires",
+            "audience": ["adultos", "turistas"],
+            "sources": [
+              {
+                "entity": "@turismo_mercedes",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DVJNDnZkS4e"
+              },
+              {
+                "entity": "Dirección de Turismo Mercedes",
+                "type": "facebook",
+                "url": "https://www.facebook.com/dirturmercedes/posts/se-viene-el-primer-encuentro-de-cicloturismo-mercedes-2026-ven%C3%AD-a-rodar-por-los-/1231389025841197"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Lujan",
+        "events": [
+          {
+            "name": "Música en la Plaza 2026 - 43ª Edición",
+            "description": "La 43ª edición de Música en la Plaza, el mega festival gratuito de Luján que convoca a más de 400 artistas locales. Shows en vivo de distintos géneros musicales, food trucks, feria de artesanos y toda la energía de una plaza llena de música frente a la Basílica. Desde las 18 hs.",
+            "category": "festival",
+            "status": "confirmed",
+            "date": "2026-03-13",
+            "start_time": "18:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Plaza Belgrano",
+            "address": "Plaza Belgrano, frente a la Basílica, Luján, Buenos Aires",
+            "audience": ["familias", "jovenes", "turistas"],
+            "sources": [
+              {
+                "entity": "Municipalidad de Luján - Cultura y Turismo",
+                "type": "facebook",
+                "url": "https://www.facebook.com/culturasyturismolujan/posts/mas-de-400-artistas-locales-en-el-escenario-de-musica-en-la-plaza-el-viernes-13/1362969069211394"
+              },
+              {
+                "entity": "Diario de Luján",
+                "type": "web",
+                "url": "https://diariodelujan.com/musica-en-la-plaza-marzo"
+              }
+            ]
+          },
+          {
+            "name": "Música en la Plaza 2026 - 43ª Edición",
+            "description": "La 43ª edición de Música en la Plaza, el mega festival gratuito de Luján que convoca a más de 400 artistas locales. Shows en vivo de distintos géneros musicales, food trucks, feria de artesanos y toda la energía de una plaza llena de música frente a la Basílica. Desde las 18 hs.",
+            "category": "festival",
+            "status": "confirmed",
+            "date": "2026-03-14",
+            "start_time": "18:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Plaza Belgrano",
+            "address": "Plaza Belgrano, frente a la Basílica, Luján, Buenos Aires",
+            "audience": ["familias", "jovenes", "turistas"],
+            "sources": [
+              {
+                "entity": "Tribuna del Pueblo",
+                "type": "web",
+                "url": "https://tribunadelpueblo.com.ar/2026/02/18/vuelve-musica-en-la-plaza-el-mega-evento-lujanense-se-realizara-en-marzo"
+              }
+            ]
+          },
+          {
+            "name": "Música en la Plaza 2026 - 43ª Edición",
+            "description": "La 43ª edición de Música en la Plaza, el mega festival gratuito de Luján que convoca a más de 400 artistas locales. Shows en vivo de distintos géneros musicales, food trucks, feria de artesanos y toda la energía de una plaza llena de música frente a la Basílica. Desde las 18 hs.",
+            "category": "festival",
+            "status": "confirmed",
+            "date": "2026-03-15",
+            "start_time": "18:00",
+            "end_time": null,
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Plaza Belgrano",
+            "address": "Plaza Belgrano, frente a la Basílica, Luján, Buenos Aires",
+            "audience": ["familias", "jovenes", "turistas"],
+            "sources": [
+              {
+                "entity": "@culturasyturismolujan",
+                "type": "instagram",
+                "url": "https://www.instagram.com/p/DVLsk-CjX10"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "city": "Belén de Escobar",
+        "events": []
+      },
+      {
+        "city": "Campana",
+        "events": []
+      },
+      {
+        "city": "Zarate",
+        "events": [
+          {
+            "name": "Folclore en la Peatonal: Noche de Danzas y Tradición",
+            "description": "Jornada especial a puro folclore en la Justa Lima Peatonal. Incluye Muestra de Danzas Folclóricas del Taller Municipal a las 20 hs y Clase Abierta de Danzas a las 19 hs. Entrada libre y gratuita.",
+            "category": "cultural",
+            "status": "confirmed",
+            "date": "2026-03-01",
+            "start_time": "19:00",
+            "end_time": "21:00",
+            "is_free": true,
+            "price_text": null,
+            "price_min": null,
+            "price_max": null,
+            "venue": "Justa Lima Peatonal",
+            "address": "Justa Lima Peatonal (entre R. Noya e Independencia), Zárate, Buenos Aires",
+            "audience": ["familias", "turistas"],
+            "sources": [
+              {
+                "entity": "INFOZC Noticias",
+                "type": "web",
+                "url": "https://infozc.com/2026/02/25/actividades-para-disfrutar-este-fin-de-semana-en-zarate-6"
+              },
+              {
+                "entity": "360 Noticias",
+                "type": "web",
+                "url": "https://360noticia.com/articulo/actividades-para-disfrutar-este-fin-de-semana-en-zarate1772039591.php"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

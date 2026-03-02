@@ -5,7 +5,7 @@ import type { AgendaResponse, City, Event } from '~/types/agenda'
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase as string
 
-const agenda = ref<AgendaResponse['weekend_agenda'] | null>(null)
+const agenda = ref<AgendaResponse['agenda'] | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 const selectedAudience = ref<string | null>(null)
@@ -15,7 +15,7 @@ onMounted(async () => {
     const response = await fetch(`${apiBase}/api/agenda`)
     if (!response.ok) throw new Error('Failed to fetch agenda')
     const data: AgendaResponse = await response.json()
-    agenda.value = data.weekend_agenda
+    agenda.value = data.agenda
   } catch (e) {
     error.value = 'Error cargando la agenda'
     console.error(e)
@@ -61,7 +61,7 @@ const handleFilter = (audience: string | null) => {
 
 <template>
   <div class="min-h-screen bg-cream-50">
-    <TheHeader v-if="agenda" :date="agenda.date" />
+    <TheHeader v-if="agenda" />
     
     <main class="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
       <div v-if="loading" class="flex items-center justify-center py-20">
@@ -101,17 +101,6 @@ const handleFilter = (audience: string | null) => {
             :city="city"
             :events="city.events"
           />
-        </div>
-        
-        <div v-if="agenda.notes?.length" class="mt-16 pt-8 border-t border-stone-200">
-          <div class="bg-stone-50 rounded-lg p-6">
-            <h3 class="font-semibold text-stone-700 mb-3">Notas</h3>
-            <ul class="space-y-2">
-              <li v-for="(note, index) in agenda.notes" :key="index" class="text-sm text-stone-600">
-                {{ note }}
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </main>

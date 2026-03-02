@@ -1,12 +1,19 @@
 export interface Event {
   name: string
   description: string
-  day: string
-  time: string
-  cost: string
-  venue: string
-  source: string
+  category: string
+  status: string
+  date: string
+  start_time: string | null
+  end_time: string | null
+  is_free: boolean | null
+  price_text: string | null
+  price_min: number | null
+  price_max: number | null
+  venue: string | null
+  address: string
   audience: string[]
+  sources: { entity: string; type: string; url: string }[]
 }
 
 export interface City {
@@ -14,21 +21,10 @@ export interface City {
   events: Event[]
 }
 
-export interface Summary {
-  total_events: number
-  free_events: number
-  paid_events: number
-  cities_with_events: string[]
-  cities_without_events: string[]
-}
-
-export interface WeekendAgenda {
-  date: string
+export interface Agenda {
   cities: City[]
-  summary: Summary
-  notes: string[]
 }
 
 export interface AgendaResponse {
-  weekend_agenda: WeekendAgenda
+  agenda: Agenda
 }
