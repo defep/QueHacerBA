@@ -28,6 +28,10 @@ const sourceText = computed(() => {
   return props.event.sources?.[0]?.entity || 'Fuente no disponible'
 })
 
+const sourceUrl = computed(() => {
+  return props.event.sources?.[0]?.url || null
+})
+
 const toggleLike = () => {
   isLiked.value = !isLiked.value
 }
@@ -92,7 +96,16 @@ const audienceLabels: Record<string, string> = {
       </div>
       
       <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
-        <p class="text-xs text-stone-400">
+        <a 
+          v-if="sourceUrl"
+          :href="sourceUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs text-blue-600 hover:underline flex items-center gap-1"
+        >
+          Fuente: {{ sourceText }} ↗
+        </a>
+        <p v-else class="text-xs text-stone-400">
           Fuente: {{ sourceText }}
         </p>
         
