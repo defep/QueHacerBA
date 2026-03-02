@@ -11,10 +11,13 @@ const props = defineProps<{
 <template>
   <section class="mb-12">
     <div class="flex items-center gap-3 mb-6">
-      <MapPin class="w-5 h-5 text-forest" />
+      <span class="text-2xl">📍</span>
       <h2 class="font-serif text-3xl font-bold text-stone-800">
         {{ city.city }}
       </h2>
+      <span class="text-sm text-stone-500 font-normal ml-2">
+        ({{ events.length }} evento{{ events.length !== 1 ? 's' : '' }})
+      </span>
     </div>
     
     <div class="w-full h-px bg-gradient-to-r from-forest/30 via-forest/10 to-transparent mb-8"></div>
