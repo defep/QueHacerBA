@@ -49,28 +49,28 @@ const audienceLabels: Record<string, string> = {
     <span v-if="event.is_free" class="absolute top-4 right-4 bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full z-10">
       Gratis
     </span>
-    
+
     <div class="p-5">
       <div class="flex items-start justify-between gap-3 mb-3 pr-12">
         <h3 class="font-semibold text-stone-800 text-lg leading-tight group-hover:text-forest transition-colors">
           {{ event.name }}
         </h3>
       </div>
-      
+
       <div class="flex items-center gap-2 text-stone-500 text-sm mb-4">
         <MapPin class="w-4 h-4 text-earth shrink-0" />
         <span class="truncate">{{ event.venue || event.address }}</span>
       </div>
-      
+
       <div class="flex flex-wrap gap-2 mb-4">
-        <span 
+        <span
           class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-700"
         >
           <Clock class="w-3.5 h-3.5" />
           {{ formatDate(event.date) }} · {{ formatTime(event.start_time) }}
         </span>
-        
-        <span 
+
+        <span
           :class="[
             'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium',
             event.is_free ? 'bg-green-50 text-forest' : 'bg-stone-100 text-stone-600'
@@ -80,23 +80,23 @@ const audienceLabels: Record<string, string> = {
           {{ costText }}
         </span>
       </div>
-      
+
       <p class="text-stone-600 text-sm leading-relaxed mb-4 line-clamp-3">
         {{ event.description }}
       </p>
-      
+
       <div class="flex flex-wrap gap-2 mb-4">
-        <span 
-          v-for="aud in event.audience" 
+        <span
+          v-for="aud in event.audience"
           :key="aud"
           class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-medium"
         >
           {{ audienceLabels[aud] || aud }}
         </span>
       </div>
-      
+
       <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
-        <a 
+        <a
           v-if="sourceUrl"
           :href="sourceUrl"
           target="_blank"
@@ -108,15 +108,6 @@ const audienceLabels: Record<string, string> = {
         <p v-else class="text-xs text-stone-400">
           Fuente: {{ sourceText }}
         </p>
-        
-        <button 
-          @click="toggleLike"
-          class="flex items-center gap-1.5 text-sm font-medium transition-colors"
-          :class="isLiked ? 'text-red-500' : 'text-stone-400 hover:text-red-500'"
-        >
-          <Heart class="w-5 h-5" :class="{ 'fill-current': isLiked }" />
-          <span class="hidden sm:inline">{{ isLiked ? 'Me interesa' : 'Me interesa' }}</span>
-        </button>
       </div>
     </div>
   </div>
