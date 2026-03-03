@@ -41,6 +41,7 @@ interface RawEvent {
 }
 
 interface Event {
+  city: string
   name: string
   description: string
   category: string
@@ -67,69 +68,58 @@ interface Agenda {
   cities: City[]
 }
 
-function processPrice(price: { min: number; max: number } | null): { is_free: boolean | null; price_text: string | null; price_min: number | null; price_max: number | null } {
-  if (price === null) {
-    return { is_free: null, price_text: 'Precio desconocido', price_min: null, price_max: null };
+function processPriceDb(priceMin: number | null, priceMax: number | null): { is_free: boolean | null; price_text: string | null } {
+  if (priceMin === null && priceMax === null) {
+    return { is_free: null, price_text: 'Precio desconocido' };
   }
-  if (price.min === 0 && price.max === 0) {
-    return { is_free: true, price_text: 'Gratis', price_min: 0, price_max: 0 };
+  if ((priceMin === 0 || priceMin === null) && (priceMax === 0 || priceMax === null)) {
+    return { is_free: true, price_text: 'Gratis' };
   }
-  if (price.min > 0) {
-    const minStr = price.min.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
-    const maxStr = price.max.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
-    if (price.min === price.max) {
-      return { is_free: false, price_text: minStr, price_min: price.min, price_max: price.max };
+  if (priceMin && priceMax) {
+    const minStr = priceMin.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    const maxStr = priceMax.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+    if (priceMin === priceMax) {
+      return { is_free: false, price_text: minStr };
     }
-    return { is_free: false, price_text: `${minStr} - ${maxStr}`, price_min: price.min, price_max: price.max };
+    return { is_free: false, price_text: `${minStr} - ${maxStr}` };
   }
-  return { is_free: null, price_text: 'Precio desconocido', price_min: null, price_max: null };
+  return { is_free: null, price_text: 'Precio desconocido' };
 }
 
-function processEvents(rawEvents: RawEvent[]): Agenda {
-  const cityMap = new Map<string, Event[]>();
-
-  for (const raw of rawEvents) {
-    for (const dateInfo of raw.dates) {
-      const priceInfo = processPrice(raw.price);
-      const event: Event = {
-        name: raw.name,
-        description: raw.description,
-        category: raw.category,
-        status: 'active',
-        date: dateInfo.date,
-        start_time: dateInfo.start_time,
-        end_time: dateInfo.end_time,
-        is_free: priceInfo.is_free,
-        price_text: priceInfo.price_text,
-        price_min: priceInfo.price_min,
-        price_max: priceInfo.price_max,
-        venue: raw.venue.name,
-        address: raw.venue.address,
-        audience: [],
-        sources: raw.sources.map(s => ({ entity: s.name, type: s.type, url: s.url }))
-      };
-
-      if (!cityMap.has(raw.city)) {
-        cityMap.set(raw.city, []);
-      }
-      cityMap.get(raw.city)!.push(event);
-    }
-  }
-
-  const cities: City[] = Array.from(cityMap.entries()).map(([city, events]) => ({
-    city,
-    events: events.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-  }));
-
-  return { cities };
-}
 
 fastify.get('/api/agenda', async () => {
-  const dataPath = path.resolve(__dirname, './data/march_2026_v2.json');
-  const data = await fs.readFile(dataPath, 'utf-8');
-  const raw = JSON.parse(data) as { events: RawEvent[] };
-  const agenda = processEvents(raw.events);
-  return { agenda };
+  const dbEvents = await db.selectFrom('events').selectAll().execute();
+
+  let events: Event[] = []
+
+  for (const evt of dbEvents) {
+    const priceMin = evt.price_min ? Number(evt.price_min) : null;
+    const priceMax = evt.price_max ? Number(evt.price_max) : null;
+    const priceInfo = processPriceDb(priceMin, priceMax);
+    const event: Event = {
+      city: evt.city,
+      name: evt.name,
+      description: evt.description || '',
+      category: evt.category,
+      status: evt.status,
+      date: evt.date instanceof Date ? evt.date.toISOString().split('T')[0] as string : String(evt.date),
+      start_time: evt.start_time,
+      end_time: evt.end_time,
+      is_free: evt.is_free,
+      price_text: priceInfo.price_text,
+      price_min: priceMin,
+      price_max: priceMax,
+      venue: evt.venue,
+      address: evt.address || '',
+      audience: typeof evt.audience === 'string' ? JSON.parse(evt.audience) : evt.audience || [],
+      sources: typeof evt.sources === 'string' ? JSON.parse(evt.sources) : evt.sources || [],
+    };
+    events.push(event)
+  }
+
+  events = events.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+
+  return { events };
 });
 
 const start = async () => {

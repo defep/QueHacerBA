@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  srcDir: 'src',
   
   css: ['~/assets/app.css'],
   
@@ -26,6 +27,4 @@ export default defineNuxtConfig({
     strict: true,
     shim: false,
   },
-
-  srcDir: './src/',
 })

@@ -5,16 +5,24 @@ const { Pool } = pg;
 
 export interface Database {
   events: {
-    id: string;
-    title: string;
+    id?: string;
+    city: string;
+    name: string;
     description: string | null;
-    location: string | null;
-    start_date: Date;
-    end_date: Date | null;
     category: string;
-    image_url: string | null;
-    created_at: Date;
-    updated_at: Date;
+    status: string;
+    date: Date;
+    start_time: string | null;
+    end_time: string | null;
+    is_free: boolean | null;
+    price_min: number | null;
+    price_max: number | null;
+    venue: string | null;
+    address: string | null;
+    audience: string[];
+    sources: { entity: string; type: string; url: string }[];
+    created_at?: Date;
+    updated_at?: Date;
   };
 }
 

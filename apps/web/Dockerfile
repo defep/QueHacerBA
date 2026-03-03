@@ -2,6 +2,9 @@ FROM node:24-alpine
 
 WORKDIR /app
 
+ARG API_BASE_URL=http://localhost:3001
+ENV API_BASE_URL=$API_BASE_URL
+
 RUN mkdir -p apps/web apps/api packages/database packages/shared
 
 COPY package.json ./
@@ -22,4 +25,4 @@ RUN npm install --workspaces && npm run build --workspace=apps/web
 
 EXPOSE 3000
 
-CMD ["npm", "run", "preview", "--workspace=apps/web"]
+CMD ["npm", "run", "dev", "--workspace=apps/web"]

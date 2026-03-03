@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import type { AgendaResponse, City, Event } from '~/types/agenda'
+import type { Agenda, City, Event } from '~/types/agenda'
 
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase as string
 
-const agenda = ref<AgendaResponse['agenda'] | null>(null)
+const agenda = ref<Agenda | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 const selectedAudience = ref<string | null>(null)
@@ -14,8 +14,7 @@ onMounted(async () => {
   try {
     const response = await fetch(`${apiBase}/api/agenda`)
     if (!response.ok) throw new Error('Failed to fetch agenda')
-    const data: AgendaResponse = await response.json()
-    agenda.value = data.agenda
+    agenda.value = await response.json()
   } catch (e) {
     error.value = 'Error cargando la agenda'
     console.error(e)
@@ -24,27 +23,43 @@ onMounted(async () => {
   }
 })
 
+const cities = computed<City[]>(() => {
+  if (!agenda.value) return []
+  
+  const cityMap = new Map<string, Event[]>()
+  
+  for (const event of agenda.value.events) {
+    if (!cityMap.has(event.city)) {
+      cityMap.set(event.city, [])
+    }
+    cityMap.get(event.city)!.push(event)
+  }
+  
+  return Array.from(cityMap.entries()).map(([city, events]) => ({
+    city,
+    events: events.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  }))
+})
+
 const availableAudiences = computed(() => {
   if (!agenda.value) return []
   
   const audiences = new Set<string>()
-  agenda.value.cities.forEach(city => {
-    city.events.forEach(event => {
-      event.audience.forEach(a => audiences.add(a))
-    })
+  agenda.value.events.forEach(event => {
+    event.audience.forEach(a => audiences.add(a))
   })
   
   return Array.from(audiences).sort()
 })
 
 const filteredCities = computed(() => {
-  if (!agenda.value) return []
+  if (!cities.value) return []
   
   if (!selectedAudience.value) {
-    return agenda.value.cities
+    return cities.value
   }
   
-  return agenda.value.cities
+  return cities.value
     .map(city => ({
       ...city,
       events: city.events.filter(event => 

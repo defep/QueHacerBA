@@ -22,9 +22,5 @@ export interface City {
 }
 
 export interface Agenda {
-  cities: City[]
-}
-
-export interface AgendaResponse {
-  agenda: Agenda
+  events: Event[]
 }
