@@ -1,13 +1,8 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from 'fastify-type-provider-zod';
-import { db } from '@quehacerba/database';
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { db, closeDatabase } from '@quehacerba/database';
+import { EventsQuerySchema, EventApiSchema } from '@quehacerba/shared';
 
 const fastify = Fastify({
   logger: true,
@@ -29,45 +24,6 @@ fastify.get('/api/events', async () => {
   return { events: [] };
 });
 
-interface RawEvent {
-  city: string
-  name: string
-  description: string
-  category: string
-  dates: { date: string; start_time: string | null; end_time: string | null }[]
-  price: { min: number; max: number } | null
-  venue: { name: string; address: string }
-  sources: { name: string; type: string; url: string }[]
-}
-
-interface Event {
-  city: string
-  name: string
-  description: string
-  category: string
-  status: string
-  date: string
-  start_time: string | null
-  end_time: string | null
-  is_free: boolean | null
-  price_text: string | null
-  price_min: number | null
-  price_max: number | null
-  venue: string | null
-  address: string
-  audience: string[]
-  sources: { entity: string; type: string; url: string }[]
-}
-
-interface City {
-  city: string
-  events: Event[]
-}
-
-interface Agenda {
-  cities: City[]
-}
-
 function processPriceDb(priceMin: number | null, priceMax: number | null): { is_free: boolean | null; price_text: string | null } {
   if (priceMin === null && priceMax === null) {
     return { is_free: null, price_text: 'Precio desconocido' };
@@ -86,40 +42,74 @@ function processPriceDb(priceMin: number | null, priceMax: number | null): { is_
   return { is_free: null, price_text: 'Precio desconocido' };
 }
 
+function parseJsonField<T>(field: unknown, defaultValue: T): T {
+  if (typeof field === 'string') {
+    try {
+      return JSON.parse(field);
+    } catch {
+      return defaultValue;
+    }
+  }
+  return field as T ?? defaultValue;
+}
 
-fastify.get('/api/agenda', async () => {
-  const dbEvents = await db.selectFrom('events').selectAll().execute();
+fastify.get('/api/agenda', async (request) => {
+  const query = EventsQuerySchema.parse(request.query);
+  const { page, limit, audience, city } = query;
+  const offset = (page - 1) * limit;
 
-  let events: Event[] = []
+  let dbEvents = await db.selectFrom('events')
+    .selectAll()
+    .orderBy('date', 'asc')
+    .limit(limit)
+    .offset(offset)
+    .execute();
 
-  for (const evt of dbEvents) {
+  let totalCount = await db.selectFrom('events')
+    .select((eb) => eb.fn.countAll().as('count'))
+    .execute()
+    .then(res => Number(res[0]?.count ?? 0));
+
+  if (city) {
+    dbEvents = dbEvents.filter(evt => evt.city === city);
+    if (page === 1) {
+      totalCount = dbEvents.length;
+    }
+  }
+
+  const events = dbEvents.map((evt) => {
+    const evtAudience = parseJsonField<string[]>(evt.audience, []);
+    
+    if (audience && !evtAudience.includes(audience)) {
+      return null;
+    }
+
     const priceMin = evt.price_min ? Number(evt.price_min) : null;
     const priceMax = evt.price_max ? Number(evt.price_max) : null;
     const priceInfo = processPriceDb(priceMin, priceMax);
-    const event: Event = {
-      city: evt.city,
-      name: evt.name,
+
+    return EventApiSchema.parse({
+      ...evt,
+      date: evt.date instanceof Date ? evt.date.toISOString().split('T')[0] : String(evt.date),
       description: evt.description || '',
-      category: evt.category,
-      status: evt.status,
-      date: evt.date instanceof Date ? evt.date.toISOString().split('T')[0] as string : String(evt.date),
-      start_time: evt.start_time,
-      end_time: evt.end_time,
-      is_free: evt.is_free,
       price_text: priceInfo.price_text,
       price_min: priceMin,
       price_max: priceMax,
-      venue: evt.venue,
       address: evt.address || '',
-      audience: typeof evt.audience === 'string' ? JSON.parse(evt.audience) : evt.audience || [],
-      sources: typeof evt.sources === 'string' ? JSON.parse(evt.sources) : evt.sources || [],
-    };
-    events.push(event)
-  }
+      audience: evtAudience,
+      sources: parseJsonField(evt.sources, []),
+    });
+  }).filter((e): e is NonNullable<typeof e> => e !== null);
 
-  events = events.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-
-  return { events };
+  return {
+    events,
+    pagination: {
+      page,
+      limit,
+      total: totalCount,
+      totalPages: Math.ceil(totalCount / limit),
+    }
+  };
 });
 
 const start = async () => {
@@ -131,5 +121,15 @@ const start = async () => {
     process.exit(1);
   }
 };
+
+const shutdown = async (signal: string) => {
+  console.log(`Received ${signal}, shutting down gracefully...`);
+  await fastify.close();
+  await closeDatabase();
+  process.exit(0);
+};
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
 
 start();

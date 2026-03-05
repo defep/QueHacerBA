@@ -10,11 +10,22 @@ const loading = ref(true)
 const error = ref<string | null>(null)
 const selectedAudience = ref<string | null>(null)
 
+const fetchAgenda = async () => {
+  const params = new URLSearchParams()
+  params.set('page', '1')
+  params.set('limit', '50')
+  if (selectedAudience.value) {
+    params.set('audience', selectedAudience.value)
+  }
+
+  const response = await fetch(`${apiBase}/api/agenda?${params.toString()}`)
+  if (!response.ok) throw new Error('Failed to fetch agenda')
+  return response.json()
+}
+
 onMounted(async () => {
   try {
-    const response = await fetch(`${apiBase}/api/agenda`)
-    if (!response.ok) throw new Error('Failed to fetch agenda')
-    agenda.value = await response.json()
+    agenda.value = await fetchAgenda()
   } catch (e) {
     error.value = 'Error cargando la agenda'
     console.error(e)
@@ -69,8 +80,22 @@ const filteredCities = computed(() => {
     .filter(city => city.events.length > 0)
 })
 
-const handleFilter = (audience: string | null) => {
+const handleFilter = async (audience: string | null) => {
   selectedAudience.value = audience
+  await reloadAgenda()
+}
+
+const reloadAgenda = async () => {
+  loading.value = true
+  error.value = null
+  try {
+    agenda.value = await fetchAgenda()
+  } catch (e) {
+    error.value = 'Error cargando la agenda'
+    console.error(e)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
@@ -89,7 +114,7 @@ const handleFilter = (audience: string | null) => {
       <div v-else-if="error" class="text-center py-20">
         <p class="text-red-600 mb-4">{{ error }}</p>
         <button 
-          @click="onMounted"
+          @click="reloadAgenda"
           class="px-4 py-2 bg-forest text-white rounded-lg hover:bg-forest-300 transition-colors"
         >
           Reintentar

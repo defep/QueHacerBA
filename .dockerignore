@@ -4,6 +4,13 @@ dist/
 .output/
 .git/
 .env
+.env.*
 *.log
 .DS_Store
 README.md
+*.md
+session-*
+.eslintcache
+.vitest/
+coverage/
+*.tsbuildinfo

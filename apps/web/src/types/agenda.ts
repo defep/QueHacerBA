@@ -1,4 +1,5 @@
 export interface Event {
+  city: string
   name: string
   description: string
   category: string
@@ -23,4 +24,10 @@ export interface City {
 
 export interface Agenda {
   events: Event[]
+  pagination: {
+    page: number
+    limit: number
+    total: number
+    totalPages: number
+  }
 }

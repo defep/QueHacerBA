@@ -9,7 +9,9 @@
     "start": "node dist/index.js",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
-    "seed": "tsx src/seed-events.ts"
+    "seed": "tsx src/seed-events.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.0",
@@ -23,6 +25,7 @@
     "@types/node": "^25.3.2",
     "nodemon": "^3.1.14",
     "tsx": "^4.21.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.1.0"
   }
 }

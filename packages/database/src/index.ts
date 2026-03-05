@@ -39,6 +39,10 @@ export function getDatabase(): Kysely<Database> {
       max: 10,
     });
 
+    pool.on('error', (err) => {
+      console.error('Unexpected database pool error:', err);
+    });
+
     dbInstance = new Kysely<Database>({
       dialect: new PostgresDialect({
         pool,
@@ -47,6 +51,13 @@ export function getDatabase(): Kysely<Database> {
   }
 
   return dbInstance;
+}
+
+export async function closeDatabase(): Promise<void> {
+  if (dbInstance) {
+    await dbInstance.destroy();
+    dbInstance = undefined;
+  }
 }
 
 export const db = getDatabase();
